@@ -1,0 +1,90 @@
+doctype html
+html
+  head
+    title Mobius API Documentation
+    meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+    link(rel="stylesheet", href="../../.tmp/public/linker/styles/font-awesome.css")
+    link(rel="stylesheet", href="../../.tmp/public/linker/styles/bootstrap.css")
+    script(type="text/javascript", src="../../.tmp/public/linker/js/jquery.js")
+    script(type="text/javascript", src="../../bower_components/bootstrap/dist/js/bootstrap.min.js")
+
+  body
+    .container
+      .row
+        .col-md-12
+          h1 Mobius API Documentation
+          span.glyphicon.glyphicon-chevron-right
+          hr
+      .row
+        .col-md-2
+          ul.nav.nav-pills.nav-stacked
+            each resources, resourceName in data
+              li
+                a.disabled
+                  strong.text-muted= resourceName
+              each resource in resources
+                li
+                  a(href="##{resourceName+resource.action}" role="tab" data-toggle="tab")
+                    case resource.method
+                      when 'get', 'GET'
+                        .pull-right.label.label-success= resource.method
+                      when 'post', 'POST'
+                        .pull-right.label.label-info= resource.method
+                      when 'put', 'PUT'
+                        .pull-right.label.label-warning= resource.method
+                      when 'delete', 'DELETE'
+                        .pull-right.label.label-danger= resource.method
+                    | &nbsp; &#10095; &nbsp;
+                    = resource.action
+
+        .col-md-10
+          .tab-content
+            each resources, resourceName in data
+              each resource in resources
+                .tab-pane.fade(id="#{resourceName+resource.action}")
+                  .panel.panel-default
+                    .panel-heading
+                      strong.text-muted= resourceName
+                      = " - " + resource.action
+                      small.text-muted= " - " + resource.url
+                      .pull-right
+                        case resource.method
+                          when 'get', 'GET'
+                            .label.label-success= resource.method
+                          when 'post', 'POST'
+                            .label.label-info= resource.method
+                          when 'put', 'PUT'
+                            .label.label-warning= resource.method
+                          when 'delete', 'DELETE'
+                            .label.label-danger= resource.method
+                      br
+                      small.text-muted= resource.description
+                    .panel-body
+                      each request in resource.requests
+                        .row
+                          .col-md-6
+                            h4 Request params
+                            if request.params
+                              table.table.table-striped.table-bordered.table-condensed
+                                each val, key in request.params
+                                  tr
+                                    th= key
+                                    td= val
+                            else
+                              .text-muted None
+                          .col-md-6
+                            h4
+                              | Response
+                              .pull-right
+                                case request.status
+                                  when 200
+                                    .label.label-success= request.status
+                                  when 201
+                                    .label.label-success= request.status
+                                  when 300
+                                    .label.label-info= request.status
+                                  default
+                                    .label= request.status
+                            if request.response
+                              pre= request.response
+
