@@ -1,0 +1,9 @@
+case method
+  when 'get', 'GET'
+    .label.label-success= method
+  when 'post', 'POST'
+    .label.label-info= method
+  when 'put', 'PUT'
+    .label.label-warning= method
+  when 'delete', 'DELETE'
+    .label.label-danger= method

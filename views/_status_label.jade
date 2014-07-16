@@ -1,0 +1,9 @@
+case status
+  when 200
+    .label.label-success= status
+  when 201
+    .label.label-success= status
+  when 300
+    .label.label-info= status
+  default
+    .label= status

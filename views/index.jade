@@ -10,28 +10,10 @@ html
 
   body
     .container
-      .row
-        .col-md-12
-          h1 API Documentation
-          hr
+      include _header
       .row
         .col-md-3
-          ul.nav.nav-pills.nav-stacked.api-doc-nav
-            each resources, resourceName in data
-              li.nav-header= resourceName
-              each resource in resources
-                li
-                  a(href="##{resourceName+resource.action}" role="tab" data-toggle="tab")
-                    case resource.method
-                      when 'get', 'GET'
-                        .pull-right.label.label-success= resource.method
-                      when 'post', 'POST'
-                        .pull-right.label.label-info= resource.method
-                      when 'put', 'PUT'
-                        .pull-right.label.label-warning= resource.method
-                      when 'delete', 'DELETE'
-                        .pull-right.label.label-danger= resource.method
-                    = resource.action
+          include _nav
 
         .col-md-9
           .tab-content
@@ -44,20 +26,13 @@ html
                       = " - " + resource.action
                       small.text-muted= " - " + resource.url
                       .pull-right
-                        case resource.method
-                          when 'get', 'GET'
-                            .label.label-success= resource.method
-                          when 'post', 'POST'
-                            .label.label-info= resource.method
-                          when 'put', 'PUT'
-                            .label.label-warning= resource.method
-                          when 'delete', 'DELETE'
-                            .label.label-danger= resource.method
+                        - method = resource.method
+                        include _method_label
                       br
                       small.text-muted= resource.description
                     .panel-body
                       each request in resource.requests
-                        .row
+                        .row.request
                           .col-md-6
                             h4 Request params
                             if request.params
@@ -72,15 +47,8 @@ html
                             h4
                               | Response
                               .pull-right
-                                case request.status
-                                  when 200
-                                    .label.label-success= request.status
-                                  when 201
-                                    .label.label-success= request.status
-                                  when 300
-                                    .label.label-info= request.status
-                                  default
-                                    .label= request.status
+                                - method = resource.method
+                                include _status_label
                             if request.response
                               pre= request.response
 

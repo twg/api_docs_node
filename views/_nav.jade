@@ -1,0 +1,11 @@
+ul.nav.nav-pills.nav-stacked.api-doc-nav
+  each resources, resourceName in data
+    li.nav-header= resourceName
+    each resource in resources
+      li
+        a(href="##{resourceName+resource.action}" role="tab" data-toggle="tab")
+          .pull-right
+            - method = resource.method
+            include _method_label
+
+          = resource.action

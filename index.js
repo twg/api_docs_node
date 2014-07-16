@@ -42,7 +42,7 @@ function add(res, options) {
           action: options.action || 'undefined',
           method: res.req.method,
           description: options.description,
-          url: url,
+          url: options.url || url,
           requests: []
         });
         resource = _.last(data[options.resource]);
