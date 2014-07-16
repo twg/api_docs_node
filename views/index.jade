@@ -1,8 +1,9 @@
 doctype html
 html
   head
-    title Mobius API Documentation
+    title API Documentation
     meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+    link(rel="stylesheet", href="assets/css/style.css")
     link(rel="stylesheet", href="assets/css/bootstrap.min.css")
     script(type="text/javascript", src="assets/js/jquery.min.js")
     script(type="text/javascript", src="assets/js/bootstrap.min.js")
@@ -11,15 +12,13 @@ html
     .container
       .row
         .col-md-12
-          h1 Mobius API Documentation
+          h1 API Documentation
           hr
       .row
-        .col-md-2
-          ul.nav.nav-pills.nav-stacked
+        .col-md-3
+          ul.nav.nav-pills.nav-stacked.api-doc-nav
             each resources, resourceName in data
-              li
-                a.disabled
-                  strong.text-muted.bg-info= resourceName
+              li.nav-header= resourceName
               each resource in resources
                 li
                   a(href="##{resourceName+resource.action}" role="tab" data-toggle="tab")
@@ -32,10 +31,9 @@ html
                         .pull-right.label.label-warning= resource.method
                       when 'delete', 'DELETE'
                         .pull-right.label.label-danger= resource.method
-                    | &nbsp; &#10095; &nbsp;
                     = resource.action
 
-        .col-md-10
+        .col-md-9
           .tab-content
             each resources, resourceName in data
               each resource in resources
