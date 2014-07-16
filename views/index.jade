@@ -3,17 +3,15 @@ html
   head
     title Mobius API Documentation
     meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
-    link(rel="stylesheet", href="../../.tmp/public/linker/styles/font-awesome.css")
-    link(rel="stylesheet", href="../../.tmp/public/linker/styles/bootstrap.css")
-    script(type="text/javascript", src="../../.tmp/public/linker/js/jquery.js")
-    script(type="text/javascript", src="../../bower_components/bootstrap/dist/js/bootstrap.min.js")
+    link(rel="stylesheet", href="assets/css/bootstrap.min.css")
+    script(type="text/javascript", src="assets/js/jquery.min.js")
+    script(type="text/javascript", src="assets/js/bootstrap.min.js")
 
   body
     .container
       .row
         .col-md-12
           h1 Mobius API Documentation
-          span.glyphicon.glyphicon-chevron-right
           hr
       .row
         .col-md-2
@@ -21,7 +19,7 @@ html
             each resources, resourceName in data
               li
                 a.disabled
-                  strong.text-muted= resourceName
+                  strong.text-muted.bg-info= resourceName
               each resource in resources
                 li
                   a(href="##{resourceName+resource.action}" role="tab" data-toggle="tab")

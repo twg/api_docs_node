@@ -5,7 +5,7 @@ Generate documentation for your API by writting tests
 ## Example
 
 
-```jasvascript
+```javascript
 var assert = require('assert');
 var request = require('supertest');
 var apidoc = require('api_docs_node');
@@ -26,5 +26,4 @@ it('should GET a single user', function (done) {
       done();
     });
 });
-
 ```
