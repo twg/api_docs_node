@@ -1,7 +1,7 @@
 {
   "name": "api_docs_node",
   "version": "0.0.1",
-  "description": "Generate documentation for your API by writting tests",
+  "description": "Generate documentation for your API by writing tests",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec --require test/bootstrap/node test/*.test.js test/**/*.test.js"

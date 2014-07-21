@@ -77,6 +77,6 @@ module.exports = {
 cleanup();
 
 process.on('exit', function () {
-  console.log('\uD83D\uDCDA Writting API documentation to ' + filePath);
+  console.log('\uD83D\uDCDA  Writing API documentation to ' + filePath);
   render();
 });
