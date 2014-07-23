@@ -76,7 +76,11 @@ module.exports = {
 
 cleanup();
 
-process.on('exit', function () {
-  console.log('\uD83D\uDCDA  Writing API documentation to ' + filePath);
-  render();
+process.on('exit', function (exitcode) {
+  if (exitcode === 0) {
+    console.log('\uD83D\uDCDA  Writing API documentation to ' + filePath);
+    render();
+  } else {
+    console.log("Not writing API documentation due to nonzero exit code " + exitcode + ".");
+  }
 });
