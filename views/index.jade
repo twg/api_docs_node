@@ -18,7 +18,7 @@ html
         .col-md-9
           .tab-content
             each resources, resourceName in data
-              each resource in resources
+              each resource, index in resources
                 .tab-pane.fade(id="#{resourceName+resource.action}")
                   .panel.panel-default
                     .panel-heading
@@ -33,22 +33,29 @@ html
                     .panel-body
                       each request in resource.requests
                         .row.request
-                          .col-md-6
+                          .col-md-5
                             h4 Request params
                             if request.params
                               table.table.table-striped.table-bordered.table-condensed
                                 each val, key in request.params
                                   tr
                                     th= key
-                                    td= val
+                                  tr
+                                    td
+                                      pre= JSON.stringify(val, null, '  ')
                             else
                               .text-muted None
-                          .col-md-6
+                          .col-md-7
                             h4
                               | Response
                               .pull-right
-                                - method = resource.method
+                                - status = request.status
                                 include _status_label
                             if request.response
-                              pre= request.response
+                              pre.pre-scrollable= request.response
+                          a.label.pull-right.back-to-top(href='#top') &#9650; Back to top
 
+    script
+      :coffee
+        jQuery ->
+          $('ul.api-doc-nav li:not(".nav-header"):first a').click();

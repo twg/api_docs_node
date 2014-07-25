@@ -26,6 +26,14 @@ ul.api-doc-nav a {
   border-top: none;
   padding: 8px 14px;
 }
+ul.api-doc-nav li a .url{
+  color: #aaa;
+  font-size: 10px;
+  line-height: 10px;
+}
+ul.api-doc-nav li.active a .url{
+  color: #ccc;
+}
 ul.api-doc-nav > li:first-child {
   border-radius: 6px 6px 0px 0px;
 }
@@ -39,3 +47,22 @@ ul.api-doc-nav > li:last-child > a {
   padding-top: 15px;
   margin-top: 5px;
 }
+.request table tr th {
+  font-size: 11px;
+}
+.request table pre {
+  border: none;
+  background: none;
+  padding-left: 15px;
+  margin: 0;
+}
+.request .back-to-top {
+  margin-right: 20px;
+  background: #ddd;
+  font-size: 10px;
+}
+
+pre {
+  font-size: 11px !important;
+}
+

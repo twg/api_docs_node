@@ -5,5 +5,9 @@ case status
     .label.label-success= status
   when 300
     .label.label-info= status
+  when 400
+    .label.label-danger= status
+  when 403
+    .label.label-danger= status
   default
     .label= status
